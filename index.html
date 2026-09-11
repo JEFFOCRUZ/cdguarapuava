@@ -1,0 +1,33 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CD Guarapuava • Bobinou</title><link rel="stylesheet" href="/styles.css"></head><body>
+<div id="loginScreen" class="login-shell"><form id="loginForm" class="login-card"><div class="brand">BOBINOU <span>MAKER STORE</span></div><h1>Central de Distribuição • Guarapuava</h1><div class="muted">Controle de entregas e aluguel.</div><div class="field"><label>Usuário</label><input id="username" required></div><div class="field"><label>Senha</label><input id="password" type="password" required></div><button class="btn primary full" type="submit">Entrar</button><div id="loginError" class="err"></div></form></div>
+
+<div id="appScreen" class="app hidden">
+<div class="header"><div><h1>Central de Distribuição • Guarapuava</h1><div class="sub">Entregas, valores a receber e aluguel</div></div><div class="toolbar"><span id="updatedAt" class="muted"></span><button class="btn" id="refreshBtn">Atualizar</button><button class="btn" id="logoutBtn">Sair</button></div></div>
+
+<div class="panel"><div class="filters">
+<div class="field"><label>Período</label><select id="periodMode"><option value="month">Mensal</option><option value="custom">Personalizado</option><option value="all">Todos</option></select></div>
+<div class="field" id="monthField"><label>Mês</label><input id="monthFilter" type="month"></div>
+<div class="field hidden" id="fromField"><label>De</label><input id="fromDate" type="date"></div>
+<div class="field hidden" id="toField"><label>Até</label><input id="toDate" type="date"></div>
+<div class="field"><label>Status</label><select id="statusFilter"><option value="all">Todos</option><option value="pending">A receber / pendente</option><option value="paid">Pago</option></select></div>
+<button id="summaryBtn" class="btn primary">Resumo</button>
+</div></div>
+
+<div class="grid">
+<div class="card red"><div class="k">ENTREGAS A RECEBER</div><div id="deliveryPending" class="v">R$ 0,00</div><div id="deliveryPendingCount" class="muted">0 entrega(s)</div></div>
+<div class="card green"><div class="k">ENTREGAS PAGAS</div><div id="deliveryPaid" class="v">R$ 0,00</div><div id="deliveryPaidCount" class="muted">0 entrega(s)</div></div>
+<div class="card purple"><div class="k">ALUGUEL PENDENTE</div><div id="rentPending" class="v">R$ 0,00</div><div id="rentPendingCount" class="muted">0 registro(s)</div></div>
+<div class="card blue"><div class="k">ALUGUEL PAGO</div><div id="rentPaid" class="v">R$ 0,00</div><div id="rentPaidCount" class="muted">0 registro(s)</div></div>
+</div>
+
+<div class="panel"><div class="section-title"><h2>Entregas</h2><div id="deliveryCount" class="muted"></div></div><div class="tablewrap"><table><thead><tr><th>Pedido</th><th>Data</th><th>Cliente</th><th>Produto</th><th>Entregador</th><th>Valor</th><th>Status</th><th>Data pgto.</th><th>Fonte pgto.</th></tr></thead><tbody id="deliveryBody"></tbody></table></div></div>
+
+<div class="panel"><div class="section-title"><h2>Aluguel • Guarapuava</h2><div id="rentCount" class="muted"></div></div><div class="tablewrap"><table><thead><tr><th>Competência</th><th>Vencimento</th><th>Valor</th><th>Status</th><th>Fonte pgto.</th><th>Data pgto.</th><th>Responsável</th></tr></thead><tbody id="rentBody"></tbody></table></div></div>
+<div class="foot">Painel somente para consulta • Bobinou Maker Store</div>
+</div>
+
+<div id="summaryModal" class="summary-modal hidden"><div class="summary-box"><div class="section-title"><h2>Resumo do período</h2><button id="closeSummary" class="btn">Fechar</button></div><div id="summaryPeriod" class="muted"></div><div class="summary-grid" style="margin-top:12px">
+<div class="summary-item"><div class="muted">Entregas a receber</div><div id="sDeliveryPending" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Entregas pagas</div><div id="sDeliveryPaid" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Aluguel pendente</div><div id="sRentPending" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Aluguel pago</div><div id="sRentPaid" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Total pendente</div><div id="sPendingTotal" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Total pago</div><div id="sPaidTotal" class="n">R$ 0,00</div></div>
+</div></div></div>
+
+<script src="/app.js"></script></body></html>
