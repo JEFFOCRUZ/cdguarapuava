@@ -5,26 +5,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bobinou • CD Guarapuava</title>
 <style>
-body{margin:0;background:#0b1118;color:#fff;font-family:Arial,sans-serif}*{box-sizing:border-box}
-.hidden{display:none!important}.wrap{max-width:1400px;margin:auto;padding:18px}.login{min-height:100vh;display:grid;place-items:center;padding:20px}
-.card,.panel{background:#151c24;border:1px solid #33404f;border-radius:16px}.card{width:min(430px,100%);padding:28px;border-top:4px solid #ffc72c}
-.brand{font-size:24px;font-weight:900}.brand span{color:#ffc72c}.muted{color:#9fb0c3;font-size:12px}
-label{display:block;font-size:12px;font-weight:700;margin:14px 0 6px}input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #394858;background:#0e151d;color:#fff}
-button{padding:10px 15px;border:1px solid #394858;border-radius:10px;background:#222c37;color:#fff;font-weight:800;cursor:pointer}.primary{background:#ffc72c;color:#17120a;border-color:#ffc72c}.full{width:100%;margin-top:18px}
-.head{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#151c24;border:1px solid #33404f;border-left:5px solid #ffc72c;border-radius:16px;padding:16px}.toolbar{display:flex;gap:8px;align-items:center}
-.panel{padding:14px;margin-top:12px}.filters{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat{background:#1c2530;border:1px solid #344150;border-radius:14px;padding:14px}.stat b{font-size:24px;display:block;margin-top:8px}.red{border-left:4px solid #ff7777}.green{border-left:4px solid #56e39f}.purple{border-left:4px solid #c294ff}.blue{border-left:4px solid #69b9ff}
-.tablewrap{overflow:auto;border:1px solid #33404d;border-radius:10px}table{width:100%;border-collapse:collapse;font-size:12px}th{background:#222d39;text-align:left;padding:9px;white-space:nowrap}td{padding:9px;border-top:1px solid #293542}.paid{color:#66e7a3;font-weight:800}.pending{color:#ffc072;font-weight:800}.money{font-weight:900}
-.err{color:#ff8585;font-size:12px;margin-top:10px;min-height:18px}
-@media(max-width:800px){.filters,.grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.filters,.grid{grid-template-columns:1fr}.head{flex-direction:column;align-items:flex-start}}
+:root{--bg:#0b1118;--panel:#151c24;--panel2:#1c2530;--line:#33404f;--text:#fff;--muted:#9fb0c3;--yellow:#ffc72c;--green:#56e39f;--red:#ff7777;--blue:#69b9ff;--purple:#c294ff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#091018,#111821);color:var(--text);font-family:Arial,sans-serif}
+.hidden{display:none!important}.login{min-height:100vh;display:grid;place-items:center;padding:20px}.card{width:min(430px,100%);background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--yellow);border-radius:18px;padding:28px}
+.brand{font-size:24px;font-weight:900}.brand span{color:var(--yellow)}.muted{color:var(--muted);font-size:12px}.err{color:#ff8d8d;font-size:12px;margin-top:10px;min-height:18px}
+label{display:block;font-size:12px;font-weight:800;margin:14px 0 6px}input,select{width:100%;background:#0e151d;color:#fff;border:1px solid #394858;border-radius:10px;padding:11px}
+button{padding:10px 14px;border:1px solid #3a4857;border-radius:10px;background:#222c37;color:#fff;font-weight:800;cursor:pointer}.primary{background:var(--yellow);color:#17120a;border-color:var(--yellow)}.full{width:100%;margin-top:18px}
+.app{max-width:1500px;margin:auto;padding:16px}.head,.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px}.head{border-left:5px solid var(--yellow);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}.head h2{margin:0}.toolbar{display:flex;gap:8px;align-items:center}
+.panel{padding:14px;margin-top:12px}.filters{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat{background:var(--panel2);border:1px solid #344150;border-radius:14px;padding:14px}.stat .k{font-size:10px;font-weight:900;color:#adbac8}.stat .v{font-size:25px;font-weight:900;margin-top:8px}.red{border-left:4px solid var(--red)}.green{border-left:4px solid var(--green)}.purple{border-left:4px solid var(--purple)}.blue{border-left:4px solid var(--blue)}
+.tablewrap{overflow:auto;border:1px solid #33404d;border-radius:10px}table{width:100%;border-collapse:collapse;font-size:12px}th{background:#222d39;text-align:left;padding:9px;white-space:nowrap}td{padding:9px;border-top:1px solid #293542}.money{font-weight:900}.paid{color:#66e7a3;font-weight:800}.pending{color:#ffc072;font-weight:800}.statusline{font-size:12px;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:grid;place-items:center;padding:20px}.modalbox{width:min(600px,100%);background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px}.sumgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sum{background:#0e151d;border:1px solid #33404f;border-radius:10px;padding:12px}.sum strong{display:block;font-size:22px;margin-top:5px}
+@media(max-width:800px){.filters,.grid,.sumgrid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.filters,.grid,.sumgrid{grid-template-columns:1fr}.head{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
+
 <div id="login" class="login">
 <form id="loginForm" class="card">
 <div class="brand">BOBINOU <span>MAKER STORE</span></div>
 <h2>Central de Distribuição • Guarapuava</h2>
-<div class="muted">Consulta de entregas e aluguel</div>
+<div class="muted">Consulta de entregas e aluguel.</div>
 <label>Usuário</label><input id="user" value="cdguarapuava">
 <label>Senha</label><input id="pass" type="password">
 <button class="primary full">Entrar</button>
@@ -32,69 +32,166 @@ button{padding:10px 15px;border:1px solid #394858;border-radius:10px;background:
 </form>
 </div>
 
-<div id="app" class="wrap hidden">
+<div id="app" class="app hidden">
 <div class="head">
-<div><h2 style="margin:0">Central de Distribuição • Guarapuava</h2><div class="muted">Entregas, valores a receber e aluguel</div></div>
-<div class="toolbar"><span id="updated" class="muted"></span><button id="reload">Atualizar</button><button id="logout">Sair</button></div>
+<div><h2>Central de Distribuição • Guarapuava</h2><div class="muted">Entregas, valores a receber e aluguel</div></div>
+<div class="toolbar"><span id="updated" class="statusline"></span><button id="reload">Atualizar</button><button id="logout">Sair</button></div>
 </div>
 
-<div class="panel">
-<div class="filters">
+<div class="panel"><div class="filters">
 <div><label>Período</label><select id="period"><option value="month">Mensal</option><option value="all">Todos</option></select></div>
 <div><label>Mês</label><input id="month" type="month"></div>
-<div><label>Status</label><select id="status"><option value="all">Todos</option><option value="pending">Pendente</option><option value="paid">Pago</option></select></div>
+<div><label>Status</label><select id="status"><option value="all">Todos</option><option value="pending">A receber / pendente</option><option value="paid">Pago</option></select></div>
 <button id="summary" class="primary">Resumo</button>
-</div>
-</div>
+</div></div>
 
 <div class="grid">
-<div class="stat red"><small>ENTREGAS A RECEBER</small><b id="dPend">R$ 0,00</b><span id="dPendC" class="muted"></span></div>
-<div class="stat green"><small>ENTREGAS PAGAS</small><b id="dPaid">R$ 0,00</b><span id="dPaidC" class="muted"></span></div>
-<div class="stat purple"><small>ALUGUEL PENDENTE</small><b id="rPend">R$ 0,00</b><span id="rPendC" class="muted"></span></div>
-<div class="stat blue"><small>ALUGUEL PAGO</small><b id="rPaid">R$ 0,00</b><span id="rPaidC" class="muted"></span></div>
+<div class="stat red"><div class="k">ENTREGAS A RECEBER</div><div id="dPend" class="v">R$ 0,00</div><div id="dPendC" class="muted"></div></div>
+<div class="stat green"><div class="k">ENTREGAS PAGAS</div><div id="dPaid" class="v">R$ 0,00</div><div id="dPaidC" class="muted"></div></div>
+<div class="stat purple"><div class="k">ALUGUEL PENDENTE</div><div id="rPend" class="v">R$ 0,00</div><div id="rPendC" class="muted"></div></div>
+<div class="stat blue"><div class="k">ALUGUEL PAGO</div><div id="rPaid" class="v">R$ 0,00</div><div id="rPaidC" class="muted"></div></div>
 </div>
 
-<div class="panel"><h3>Entregas</h3><div class="tablewrap"><table>
-<thead><tr><th>Pedido</th><th>Data</th><th>Cliente</th><th>Entregador</th><th>Valor</th><th>Status</th><th>Data pgto.</th><th>Fonte pgto.</th></tr></thead>
-<tbody id="dBody"></tbody></table></div></div>
-
-<div class="panel"><h3>Aluguel • Guarapuava</h3><div class="tablewrap"><table>
-<thead><tr><th>Competência</th><th>Vencimento</th><th>Valor</th><th>Status</th><th>Fonte pgto.</th><th>Data pgto.</th><th>Responsável</th></tr></thead>
-<tbody id="rBody"></tbody></table></div></div>
+<div class="panel"><h3>Entregas</h3><div class="tablewrap"><table><thead><tr><th>Pedido</th><th>Data</th><th>Cliente</th><th>Entregador</th><th>Valor</th><th>Status</th><th>Data pgto.</th><th>Fonte pgto.</th></tr></thead><tbody id="dBody"></tbody></table></div></div>
+<div class="panel"><h3>Aluguel • Guarapuava</h3><div class="tablewrap"><table><thead><tr><th>Competência</th><th>Vencimento</th><th>Valor</th><th>Status</th><th>Fonte pgto.</th><th>Data pgto.</th><th>Responsável</th></tr></thead><tbody id="rBody"></tbody></table></div></div>
 </div>
+
+<div id="modal" class="modal hidden"><div class="modalbox">
+<div style="display:flex;justify-content:space-between;align-items:center"><h3>Resumo</h3><button id="closeModal">Fechar</button></div>
+<div id="sumPeriod" class="muted"></div>
+<div class="sumgrid" style="margin-top:12px">
+<div class="sum">Entregas pendentes<strong id="sd1"></strong></div>
+<div class="sum">Entregas pagas<strong id="sd2"></strong></div>
+<div class="sum">Aluguel pendente<strong id="sr1"></strong></div>
+<div class="sum">Aluguel pago<strong id="sr2"></strong></div>
+</div></div></div>
 
 <script>
 const API_URL='https://script.google.com/macros/s/AKfycbyyVUNlMNd2I03cJWx4EnV1Sb8C_51cR7v5hzq1hon5OkouTDXDEYAiNDxBHBGs0ZeY/exec';
 const API_KEY='BOBINOU-CD-GUARAPUAVA-2026';
 let DATA={deliveries:[],rents:[]},F={deliveries:[],rents:[]};
+
 const $=id=>document.getElementById(id);
 const brl=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-const paid=s=>String(s||'').toLowerCase()==='pago';
-function parseDate(s){const m=String(s||'').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?new Date(+m[3],+m[2]-1,+m[1]):null}
-function mk(d){return d?d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'):''}
-function statusOk(x){const s=$('status').value;return s==='all'||(s==='paid'?paid(x.status):!paid(x.status))}
-function periodOk(x,type){if($('period').value==='all')return true;const d=parseDate(type==='d'?x.data:x.vencimento);return d&&mk(d)===$('month').value}
-function totals(a){const p=a.filter(x=>!paid(x.status)),q=a.filter(x=>paid(x.status));return{pv:p.reduce((s,x)=>s+Number(x.valor||0),0),qv:q.reduce((s,x)=>s+Number(x.valor||0),0),pc:p.length,qc:q.length}}
-function apply(){F.deliveries=DATA.deliveries.filter(x=>statusOk(x)&&periodOk(x,'d'));F.rents=DATA.rents.filter(x=>statusOk(x)&&periodOk(x,'r'));render()}
+const paid=s=>String(s||'').trim().toLowerCase()==='pago';
+
+function parseDate(s){
+  const m=String(s||'').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  return m?new Date(+m[3],+m[2]-1,+m[1]):null;
+}
+function monthKey(d){return d?d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'):''}
+function periodOk(x,type){
+  if($('period').value==='all') return true;
+  const d=parseDate(type==='d'?x.data:x.vencimento);
+  return d && monthKey(d)===$('month').value;
+}
+function statusOk(x){
+  const s=$('status').value;
+  return s==='all'||(s==='paid'?paid(x.status):!paid(x.status));
+}
+function totals(a){
+  const p=a.filter(x=>!paid(x.status)),q=a.filter(x=>paid(x.status));
+  return {
+    pv:p.reduce((s,x)=>s+Number(x.valor||0),0),
+    qv:q.reduce((s,x)=>s+Number(x.valor||0),0),
+    pc:p.length,qc:q.length
+  };
+}
+function apply(){
+  F.deliveries=DATA.deliveries.filter(x=>periodOk(x,'d')&&statusOk(x));
+  F.rents=DATA.rents.filter(x=>periodOk(x,'r')&&statusOk(x));
+  render();
+}
 function render(){
- const d=totals(F.deliveries),r=totals(F.rents);
- $('dPend').textContent=brl(d.pv);$('dPaid').textContent=brl(d.qv);$('rPend').textContent=brl(r.pv);$('rPaid').textContent=brl(r.qv);
- $('dPendC').textContent=d.pc+' entrega(s)';$('dPaidC').textContent=d.qc+' entrega(s)';$('rPendC').textContent=r.pc+' registro(s)';$('rPaidC').textContent=r.qc+' registro(s)';
- $('dBody').innerHTML=F.deliveries.length?F.deliveries.map(x=>`<tr><td>#${x.pedido||''}</td><td>${x.data||'—'}</td><td>${x.cliente||'—'}</td><td>${x.responsavelEntrega||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.dataPagamento||'—'}</td><td>${x.fontePagamento||'—'}</td></tr>`).join(''):'<tr><td colspan="8" class="muted">Nenhuma entrega.</td></tr>';
- $('rBody').innerHTML=F.rents.length?F.rents.map(x=>`<tr><td>${x.competencia||'—'}</td><td>${x.vencimento||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.fontePagamento||'—'}</td><td>${x.dataPagamento||'—'}</td><td>${x.responsavel||'—'}</td></tr>`).join(''):'<tr><td colspan="7" class="muted">Nenhum aluguel.</td></tr>';
+  const d=totals(F.deliveries),r=totals(F.rents);
+  $('dPend').textContent=brl(d.pv);$('dPaid').textContent=brl(d.qv);
+  $('rPend').textContent=brl(r.pv);$('rPaid').textContent=brl(r.qv);
+  $('dPendC').textContent=d.pc+' entrega(s)';$('dPaidC').textContent=d.qc+' entrega(s)';
+  $('rPendC').textContent=r.pc+' registro(s)';$('rPaidC').textContent=r.qc+' registro(s)';
+
+  $('dBody').innerHTML=F.deliveries.length
+    ?F.deliveries.map(x=>`<tr><td>#${x.pedido||''}</td><td>${x.data||'—'}</td><td>${x.cliente||'—'}</td><td>${x.responsavelEntrega||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.dataPagamento||'—'}</td><td>${x.fontePagamento||'—'}</td></tr>`).join('')
+    :'<tr><td colspan="8" class="muted">Nenhuma entrega.</td></tr>';
+
+  $('rBody').innerHTML=F.rents.length
+    ?F.rents.map(x=>`<tr><td>${x.competencia||'—'}</td><td>${x.vencimento||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.fontePagamento||'—'}</td><td>${x.dataPagamento||'—'}</td><td>${x.responsavel||'—'}</td></tr>`).join('')
+    :'<tr><td colspan="7" class="muted">Nenhum aluguel.</td></tr>';
 }
+
+function jsonp(action){
+  return new Promise((resolve,reject)=>{
+    const callback='bobinouCb_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+    const script=document.createElement('script');
+    const timer=setTimeout(()=>{
+      cleanup();
+      reject(new Error('Tempo esgotado ao consultar o Apps Script.'));
+    },15000);
+
+    function cleanup(){
+      clearTimeout(timer);
+      try{delete window[callback]}catch{}
+      if(script.parentNode) script.parentNode.removeChild(script);
+    }
+
+    window[callback]=data=>{
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror=()=>{
+      cleanup();
+      reject(new Error('O Apps Script não respondeu. Verifique a implantação.'));
+    };
+
+    script.src=API_URL+
+      '?action='+encodeURIComponent(action)+
+      '&key='+encodeURIComponent(API_KEY)+
+      '&callback='+encodeURIComponent(callback)+
+      '&_='+Date.now();
+
+    document.body.appendChild(script);
+  });
+}
+
 async function loadData(){
- $('updated').textContent='Carregando...';
- try{
-   const r=await fetch(API_URL+'?action=dashboard&key='+encodeURIComponent(API_KEY)+'&_='+Date.now(),{cache:'no-store'});
-   const d=await r.json();
-   if(!d.ok)throw new Error(d.error||'Erro na API');
-   DATA=d;$('updated').textContent='Atualizado '+new Date(d.updatedAt).toLocaleString('pt-BR');apply();
- }catch(e){$('updated').textContent='Erro ao carregar';alert('Não foi possível carregar os dados. Verifique a publicação do Apps Script.\n\n'+e.message)}
+  $('updated').textContent='Carregando...';
+  try{
+    const d=await jsonp('dashboard');
+    if(!d||!d.ok) throw new Error((d&&d.error)||'Resposta inválida.');
+    DATA=d;
+    $('updated').textContent='Atualizado '+new Date(d.updatedAt).toLocaleString('pt-BR');
+    apply();
+  }catch(e){
+    $('updated').textContent='Erro ao carregar';
+    alert('Não foi possível carregar os dados.\\n\\n'+e.message);
+  }
 }
-$('loginForm').onsubmit=e=>{e.preventDefault();if($('user').value.trim()!=='cdguarapuava'||$('pass').value!=='gpvede'){$('loginErr').textContent='Usuário ou senha inválidos.';return}$('login').classList.add('hidden');$('app').classList.remove('hidden');const d=new Date();$('month').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');loadData()}
-$('reload').onclick=loadData;$('logout').onclick=()=>location.reload();$('period').onchange=apply;$('month').onchange=apply;$('status').onchange=apply;
-$('summary').onclick=()=>{const d=totals(F.deliveries),r=totals(F.rents);alert('RESUMO\n\nEntregas pendentes: '+brl(d.pv)+'\nEntregas pagas: '+brl(d.qv)+'\nAluguel pendente: '+brl(r.pv)+'\nAluguel pago: '+brl(r.qv))}
+
+$('loginForm').onsubmit=e=>{
+  e.preventDefault();
+  if($('user').value.trim()!=='cdguarapuava'||$('pass').value!=='gpvede'){
+    $('loginErr').textContent='Usuário ou senha inválidos.';
+    return;
+  }
+  $('login').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  const d=new Date();
+  $('month').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+  loadData();
+};
+$('reload').onclick=loadData;
+$('logout').onclick=()=>location.reload();
+$('period').onchange=apply;
+$('month').onchange=apply;
+$('status').onchange=apply;
+$('summary').onclick=()=>{
+  const d=totals(F.deliveries),r=totals(F.rents);
+  $('sd1').textContent=brl(d.pv);$('sd2').textContent=brl(d.qv);
+  $('sr1').textContent=brl(r.pv);$('sr2').textContent=brl(r.qv);
+  $('sumPeriod').textContent=$('period').value==='all'?'Todos os registros':$('month').value;
+  $('modal').classList.remove('hidden');
+};
+$('closeModal').onclick=()=>$('modal').classList.add('hidden');
 </script>
 </body>
 </html>
