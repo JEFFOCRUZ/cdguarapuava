@@ -1,33 +1,100 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CD Guarapuava • Bobinou</title><link rel="stylesheet" href="/styles.css"></head><body>
-<div id="loginScreen" class="login-shell"><form id="loginForm" class="login-card"><div class="brand">BOBINOU <span>MAKER STORE</span></div><h1>Central de Distribuição • Guarapuava</h1><div class="muted">Controle de entregas e aluguel.</div><div class="field"><label>Usuário</label><input id="username" required></div><div class="field"><label>Senha</label><input id="password" type="password" required></div><button class="btn primary full" type="submit">Entrar</button><div id="loginError" class="err"></div></form></div>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bobinou • CD Guarapuava</title>
+<style>
+body{margin:0;background:#0b1118;color:#fff;font-family:Arial,sans-serif}*{box-sizing:border-box}
+.hidden{display:none!important}.wrap{max-width:1400px;margin:auto;padding:18px}.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.card,.panel{background:#151c24;border:1px solid #33404f;border-radius:16px}.card{width:min(430px,100%);padding:28px;border-top:4px solid #ffc72c}
+.brand{font-size:24px;font-weight:900}.brand span{color:#ffc72c}.muted{color:#9fb0c3;font-size:12px}
+label{display:block;font-size:12px;font-weight:700;margin:14px 0 6px}input,select{width:100%;padding:11px;border-radius:10px;border:1px solid #394858;background:#0e151d;color:#fff}
+button{padding:10px 15px;border:1px solid #394858;border-radius:10px;background:#222c37;color:#fff;font-weight:800;cursor:pointer}.primary{background:#ffc72c;color:#17120a;border-color:#ffc72c}.full{width:100%;margin-top:18px}
+.head{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#151c24;border:1px solid #33404f;border-left:5px solid #ffc72c;border-radius:16px;padding:16px}.toolbar{display:flex;gap:8px;align-items:center}
+.panel{padding:14px;margin-top:12px}.filters{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat{background:#1c2530;border:1px solid #344150;border-radius:14px;padding:14px}.stat b{font-size:24px;display:block;margin-top:8px}.red{border-left:4px solid #ff7777}.green{border-left:4px solid #56e39f}.purple{border-left:4px solid #c294ff}.blue{border-left:4px solid #69b9ff}
+.tablewrap{overflow:auto;border:1px solid #33404d;border-radius:10px}table{width:100%;border-collapse:collapse;font-size:12px}th{background:#222d39;text-align:left;padding:9px;white-space:nowrap}td{padding:9px;border-top:1px solid #293542}.paid{color:#66e7a3;font-weight:800}.pending{color:#ffc072;font-weight:800}.money{font-weight:900}
+.err{color:#ff8585;font-size:12px;margin-top:10px;min-height:18px}
+@media(max-width:800px){.filters,.grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.filters,.grid{grid-template-columns:1fr}.head{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+<form id="loginForm" class="card">
+<div class="brand">BOBINOU <span>MAKER STORE</span></div>
+<h2>Central de Distribuição • Guarapuava</h2>
+<div class="muted">Consulta de entregas e aluguel</div>
+<label>Usuário</label><input id="user" value="cdguarapuava">
+<label>Senha</label><input id="pass" type="password">
+<button class="primary full">Entrar</button>
+<div id="loginErr" class="err"></div>
+</form>
+</div>
 
-<div id="appScreen" class="app hidden">
-<div class="header"><div><h1>Central de Distribuição • Guarapuava</h1><div class="sub">Entregas, valores a receber e aluguel</div></div><div class="toolbar"><span id="updatedAt" class="muted"></span><button class="btn" id="refreshBtn">Atualizar</button><button class="btn" id="logoutBtn">Sair</button></div></div>
+<div id="app" class="wrap hidden">
+<div class="head">
+<div><h2 style="margin:0">Central de Distribuição • Guarapuava</h2><div class="muted">Entregas, valores a receber e aluguel</div></div>
+<div class="toolbar"><span id="updated" class="muted"></span><button id="reload">Atualizar</button><button id="logout">Sair</button></div>
+</div>
 
-<div class="panel"><div class="filters">
-<div class="field"><label>Período</label><select id="periodMode"><option value="month">Mensal</option><option value="custom">Personalizado</option><option value="all">Todos</option></select></div>
-<div class="field" id="monthField"><label>Mês</label><input id="monthFilter" type="month"></div>
-<div class="field hidden" id="fromField"><label>De</label><input id="fromDate" type="date"></div>
-<div class="field hidden" id="toField"><label>Até</label><input id="toDate" type="date"></div>
-<div class="field"><label>Status</label><select id="statusFilter"><option value="all">Todos</option><option value="pending">A receber / pendente</option><option value="paid">Pago</option></select></div>
-<button id="summaryBtn" class="btn primary">Resumo</button>
-</div></div>
+<div class="panel">
+<div class="filters">
+<div><label>Período</label><select id="period"><option value="month">Mensal</option><option value="all">Todos</option></select></div>
+<div><label>Mês</label><input id="month" type="month"></div>
+<div><label>Status</label><select id="status"><option value="all">Todos</option><option value="pending">Pendente</option><option value="paid">Pago</option></select></div>
+<button id="summary" class="primary">Resumo</button>
+</div>
+</div>
 
 <div class="grid">
-<div class="card red"><div class="k">ENTREGAS A RECEBER</div><div id="deliveryPending" class="v">R$ 0,00</div><div id="deliveryPendingCount" class="muted">0 entrega(s)</div></div>
-<div class="card green"><div class="k">ENTREGAS PAGAS</div><div id="deliveryPaid" class="v">R$ 0,00</div><div id="deliveryPaidCount" class="muted">0 entrega(s)</div></div>
-<div class="card purple"><div class="k">ALUGUEL PENDENTE</div><div id="rentPending" class="v">R$ 0,00</div><div id="rentPendingCount" class="muted">0 registro(s)</div></div>
-<div class="card blue"><div class="k">ALUGUEL PAGO</div><div id="rentPaid" class="v">R$ 0,00</div><div id="rentPaidCount" class="muted">0 registro(s)</div></div>
+<div class="stat red"><small>ENTREGAS A RECEBER</small><b id="dPend">R$ 0,00</b><span id="dPendC" class="muted"></span></div>
+<div class="stat green"><small>ENTREGAS PAGAS</small><b id="dPaid">R$ 0,00</b><span id="dPaidC" class="muted"></span></div>
+<div class="stat purple"><small>ALUGUEL PENDENTE</small><b id="rPend">R$ 0,00</b><span id="rPendC" class="muted"></span></div>
+<div class="stat blue"><small>ALUGUEL PAGO</small><b id="rPaid">R$ 0,00</b><span id="rPaidC" class="muted"></span></div>
 </div>
 
-<div class="panel"><div class="section-title"><h2>Entregas</h2><div id="deliveryCount" class="muted"></div></div><div class="tablewrap"><table><thead><tr><th>Pedido</th><th>Data</th><th>Cliente</th><th>Produto</th><th>Entregador</th><th>Valor</th><th>Status</th><th>Data pgto.</th><th>Fonte pgto.</th></tr></thead><tbody id="deliveryBody"></tbody></table></div></div>
+<div class="panel"><h3>Entregas</h3><div class="tablewrap"><table>
+<thead><tr><th>Pedido</th><th>Data</th><th>Cliente</th><th>Entregador</th><th>Valor</th><th>Status</th><th>Data pgto.</th><th>Fonte pgto.</th></tr></thead>
+<tbody id="dBody"></tbody></table></div></div>
 
-<div class="panel"><div class="section-title"><h2>Aluguel • Guarapuava</h2><div id="rentCount" class="muted"></div></div><div class="tablewrap"><table><thead><tr><th>Competência</th><th>Vencimento</th><th>Valor</th><th>Status</th><th>Fonte pgto.</th><th>Data pgto.</th><th>Responsável</th></tr></thead><tbody id="rentBody"></tbody></table></div></div>
-<div class="foot">Painel somente para consulta • Bobinou Maker Store</div>
+<div class="panel"><h3>Aluguel • Guarapuava</h3><div class="tablewrap"><table>
+<thead><tr><th>Competência</th><th>Vencimento</th><th>Valor</th><th>Status</th><th>Fonte pgto.</th><th>Data pgto.</th><th>Responsável</th></tr></thead>
+<tbody id="rBody"></tbody></table></div></div>
 </div>
 
-<div id="summaryModal" class="summary-modal hidden"><div class="summary-box"><div class="section-title"><h2>Resumo do período</h2><button id="closeSummary" class="btn">Fechar</button></div><div id="summaryPeriod" class="muted"></div><div class="summary-grid" style="margin-top:12px">
-<div class="summary-item"><div class="muted">Entregas a receber</div><div id="sDeliveryPending" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Entregas pagas</div><div id="sDeliveryPaid" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Aluguel pendente</div><div id="sRentPending" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Aluguel pago</div><div id="sRentPaid" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Total pendente</div><div id="sPendingTotal" class="n">R$ 0,00</div></div><div class="summary-item"><div class="muted">Total pago</div><div id="sPaidTotal" class="n">R$ 0,00</div></div>
-</div></div></div>
-
-<script src="/app.js"></script></body></html>
+<script>
+const API_URL='https://script.google.com/macros/s/AKfycbyyVUNlMNd2I03cJWx4EnV1Sb8C_51cR7v5hzq1hon5OkouTDXDEYAiNDxBHBGs0ZeY/exec';
+const API_KEY='BOBINOU-CD-GUARAPUAVA-2026';
+let DATA={deliveries:[],rents:[]},F={deliveries:[],rents:[]};
+const $=id=>document.getElementById(id);
+const brl=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const paid=s=>String(s||'').toLowerCase()==='pago';
+function parseDate(s){const m=String(s||'').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?new Date(+m[3],+m[2]-1,+m[1]):null}
+function mk(d){return d?d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'):''}
+function statusOk(x){const s=$('status').value;return s==='all'||(s==='paid'?paid(x.status):!paid(x.status))}
+function periodOk(x,type){if($('period').value==='all')return true;const d=parseDate(type==='d'?x.data:x.vencimento);return d&&mk(d)===$('month').value}
+function totals(a){const p=a.filter(x=>!paid(x.status)),q=a.filter(x=>paid(x.status));return{pv:p.reduce((s,x)=>s+Number(x.valor||0),0),qv:q.reduce((s,x)=>s+Number(x.valor||0),0),pc:p.length,qc:q.length}}
+function apply(){F.deliveries=DATA.deliveries.filter(x=>statusOk(x)&&periodOk(x,'d'));F.rents=DATA.rents.filter(x=>statusOk(x)&&periodOk(x,'r'));render()}
+function render(){
+ const d=totals(F.deliveries),r=totals(F.rents);
+ $('dPend').textContent=brl(d.pv);$('dPaid').textContent=brl(d.qv);$('rPend').textContent=brl(r.pv);$('rPaid').textContent=brl(r.qv);
+ $('dPendC').textContent=d.pc+' entrega(s)';$('dPaidC').textContent=d.qc+' entrega(s)';$('rPendC').textContent=r.pc+' registro(s)';$('rPaidC').textContent=r.qc+' registro(s)';
+ $('dBody').innerHTML=F.deliveries.length?F.deliveries.map(x=>`<tr><td>#${x.pedido||''}</td><td>${x.data||'—'}</td><td>${x.cliente||'—'}</td><td>${x.responsavelEntrega||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.dataPagamento||'—'}</td><td>${x.fontePagamento||'—'}</td></tr>`).join(''):'<tr><td colspan="8" class="muted">Nenhuma entrega.</td></tr>';
+ $('rBody').innerHTML=F.rents.length?F.rents.map(x=>`<tr><td>${x.competencia||'—'}</td><td>${x.vencimento||'—'}</td><td class="money">${brl(x.valor)}</td><td class="${paid(x.status)?'paid':'pending'}">${x.status||'Pendente'}</td><td>${x.fontePagamento||'—'}</td><td>${x.dataPagamento||'—'}</td><td>${x.responsavel||'—'}</td></tr>`).join(''):'<tr><td colspan="7" class="muted">Nenhum aluguel.</td></tr>';
+}
+async function loadData(){
+ $('updated').textContent='Carregando...';
+ try{
+   const r=await fetch(API_URL+'?action=dashboard&key='+encodeURIComponent(API_KEY)+'&_='+Date.now(),{cache:'no-store'});
+   const d=await r.json();
+   if(!d.ok)throw new Error(d.error||'Erro na API');
+   DATA=d;$('updated').textContent='Atualizado '+new Date(d.updatedAt).toLocaleString('pt-BR');apply();
+ }catch(e){$('updated').textContent='Erro ao carregar';alert('Não foi possível carregar os dados. Verifique a publicação do Apps Script.\n\n'+e.message)}
+}
+$('loginForm').onsubmit=e=>{e.preventDefault();if($('user').value.trim()!=='cdguarapuava'||$('pass').value!=='gpvede'){$('loginErr').textContent='Usuário ou senha inválidos.';return}$('login').classList.add('hidden');$('app').classList.remove('hidden');const d=new Date();$('month').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');loadData()}
+$('reload').onclick=loadData;$('logout').onclick=()=>location.reload();$('period').onchange=apply;$('month').onchange=apply;$('status').onchange=apply;
+$('summary').onclick=()=>{const d=totals(F.deliveries),r=totals(F.rents);alert('RESUMO\n\nEntregas pendentes: '+brl(d.pv)+'\nEntregas pagas: '+brl(d.qv)+'\nAluguel pendente: '+brl(r.pv)+'\nAluguel pago: '+brl(r.qv))}
+</script>
+</body>
+</html>
